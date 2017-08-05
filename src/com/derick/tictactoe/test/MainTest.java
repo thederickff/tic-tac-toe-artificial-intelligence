@@ -14,9 +14,7 @@ import java.util.Scanner;
  */
 public class MainTest {
 
-    public static String[][] places = new String[3][3];
     public static String table;
-    public static boolean running = true;
 
     /**
      * @param args the command line arguments
@@ -27,9 +25,9 @@ public class MainTest {
         GameController game = new GameController();
         
 
-        while (running) {
+        while (game.isRunning()) {
 
-            updateBoard();
+            updateBoard(game.getTable());
 
             try {
                 System.out.print("Give a row (between 1 and 3): $ ");
@@ -37,17 +35,17 @@ public class MainTest {
                 System.out.print("Give a column (between 1 and 3): $ ");
                 int columnGuest = input.nextInt() - 1;
                 
-                 System.out.println("\n\n\n************************************");
-                pressButton(places, "X", rowGuest, columnGuest);
+                System.out.println("\n\n\n************************************");
+                game.pressButton("X", rowGuest, columnGuest);
             } catch (Exception e) {
-                running = false;
+                game.setRunning(false);
                 System.out.println("Error: " + e);
             }
         }
 
     }
 
-    static void updateBoard() {
+    static void updateBoard(String[][] places) {
 
         // Prints column position ex: # 1 2 3
         table = "# ";
@@ -73,16 +71,4 @@ public class MainTest {
         System.out.println(table);
     }
 
-    static void pressButton(String[][] place, String guest, int i, int j) {
-       
-        if (i < 3 && j < 3) {
-            if (!place[i][j].equals("X")) {
-                place[i][j] = guest;
-            } else {
-                System.out.println("Error: YOU CANNOT GUEST HERE!");
-            }
-        } else {
-            System.out.println("Error: PLACES GIVEN OUT OF BOUND!");
-        }
-    }
 }

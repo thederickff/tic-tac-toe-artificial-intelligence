@@ -14,8 +14,11 @@ public class GameController {
 
     // Tic tac toe 
     private String[][] table;
+    private boolean running;
     
     public GameController(){
+        // Initialize game as running
+        this.running = true;
         // initialize a 3x3 table
         this.table = new String[3][3];
         
@@ -32,7 +35,7 @@ public class GameController {
         // Check if the places is out of bound
         if (i < 3 && j < 3) {
             // Check if the place given weren't used yet
-            if (!this.table[i][j].equals("X") || !this.table[i][j].equals("O")) {
+            if (!this.table[i][j].equals("X") && !this.table[i][j].equals("O")) {
                 this.table[i][j] = guest;
             } else {
                 System.out.println("Error: YOU CANNOT GUEST HERE!");
@@ -49,6 +52,16 @@ public class GameController {
     public void setTable(String[][] table) {
         this.table = table;
     }
+
+    public boolean isRunning() {
+        return running;
+    }
+
+    public void setRunning(boolean running) {
+        this.running = running;
+    }
+    
+    
     
     
 }
