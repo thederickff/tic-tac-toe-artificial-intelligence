@@ -44,7 +44,9 @@ public class GameController {
         checkWinner(this.player);
         this.enemy.setPlaying(true);
         this.enemy.update(this);
-        checkWinner(this.enemy);
+        if (running) {
+            checkWinner(this.enemy);
+        }
         checkBoard();
     }
 
