@@ -89,7 +89,6 @@ public class Enemy extends Players {
             if (table[2][2].equals(blank)) {
                 // then pressButton
                 pressButton(table, this.type, 2, 2);
-                System.out.println("defense");
             }
         }
 
@@ -103,7 +102,6 @@ public class Enemy extends Players {
             if (table[1][1].equals(blank)) {
                 // then pressButton
                 pressButton(table, this.type, 1, 1);
-                System.out.println("defense");
             }
         }
 
@@ -117,10 +115,236 @@ public class Enemy extends Players {
             if (table[0][0].equals(blank)) {
                 // then pressButton
                 pressButton(table, this.type, 0, 0);
-                System.out.println("defense");
             }
         }
 
+        // ************************* COLUMN 0 ***********************************
+        /*  #  0  1  2
+         *  0 [X][ ][ ]
+         *  1 [X][ ][ ]
+         *  2 [ ][ ][ ]  */
+        if (!table[0][0].equals(this.type) && !table[0][0].equals(blank)
+                && !table[1][0].equals(this.type) && !table[1][0].equals(blank)) {
+            // Check if the wished places is blank
+            if (table[2][0].equals(blank)) {
+                // then pressButton
+                pressButton(table, this.type, 2, 0);
+            }
+        }
+        /*  #  0  1  2
+         *  0 [X][ ][ ]
+         *  1 [ ][ ][ ]
+         *  2 [X][ ][ ]  */
+        if (!table[0][0].equals(this.type) && !table[0][0].equals(blank)
+                && !table[2][0].equals(this.type) && !table[2][0].equals(blank)) {
+            // Check if the wished places is blank
+            if (table[1][0].equals(blank)) {
+                // then pressButton
+                pressButton(table, this.type, 1, 0);
+            }
+        }
+        /*  #  0  1  2
+         *  0 [ ][ ][ ]
+         *  1 [X][ ][ ]
+         *  2 [X][ ][ ]  */
+        if (!table[1][0].equals(this.type) && !table[1][0].equals(blank)
+                && !table[2][0].equals(this.type) && !table[2][0].equals(blank)) {
+            // Check if the wished places is blank
+            if (table[0][0].equals(blank)) {
+                // then pressButton
+                pressButton(table, this.type, 0, 0);
+            }
+        }
+        // ************************* COLUMN 1 ***********************************
+        /*  #  0  1  2
+         *  0 [ ][X][ ]
+         *  1 [ ][X][ ]
+         *  2 [ ][ ][ ]  */
+        if (!table[0][1].equals(this.type) && !table[0][1].equals(blank)
+                && !table[1][1].equals(this.type) && !table[1][1].equals(blank)) {
+            // Check if the wished places is blank
+            if (table[2][1].equals(blank)) {
+                // then pressButton
+                pressButton(table, this.type, 2, 1);
+            }
+        }
+        /*  #  0  1  2
+         *  0 [ ][X][ ]
+         *  1 [ ][ ][ ]
+         *  2 [ ][X][ ]  */
+        if (!table[0][1].equals(this.type) && !table[0][1].equals(blank)
+                && !table[2][1].equals(this.type) && !table[2][1].equals(blank)) {
+            // Check if the wished places is blank
+            if (table[1][1].equals(blank)) {
+                // then pressButton
+                pressButton(table, this.type, 1, 1);
+            }
+        }
+        /*  #  0  1  2
+         *  0 [ ][ ][ ]
+         *  1 [ ][X][ ]
+         *  2 [ ][X][ ]  */
+        if (!table[1][1].equals(this.type) && !table[1][1].equals(blank)
+                && !table[2][1].equals(this.type) && !table[2][1].equals(blank)) {
+            // Check if the wished places is blank
+            if (table[0][1].equals(blank)) {
+                // then pressButton
+                pressButton(table, this.type, 0, 1);
+            }
+        }
+        
+        // ************************* COLUMN 2 ***********************************
+        /*  #  0  1  2
+         *  0 [ ][ ][X]
+         *  1 [ ][ ][X]
+         *  2 [ ][ ][ ]  */
+        if (!table[0][2].equals(this.type) && !table[0][2].equals(blank)
+                && !table[1][2].equals(this.type) && !table[1][2].equals(blank)) {
+            // Check if the wished places is blank
+            if (table[2][2].equals(blank)) {
+                // then pressButton
+                pressButton(table, this.type, 2, 2);
+            }
+        }
+        /*  #  0  1  2
+         *  0 [ ][ ][X]
+         *  1 [ ][ ][ ]
+         *  2 [ ][ ][X]  */
+        if (!table[0][2].equals(this.type) && !table[0][2].equals(blank)
+                && !table[2][2].equals(this.type) && !table[2][2].equals(blank)) {
+            // Check if the wished places is blank
+            if (table[1][2].equals(blank)) {
+                // then pressButton
+                pressButton(table, this.type, 1, 2);
+            }
+        }
+        /*  #  0  1  2
+         *  0 [ ][ ][ ]
+         *  1 [ ][ ][X]
+         *  2 [ ][ ][X]  */
+        if (!table[1][2].equals(this.type) && !table[1][2].equals(blank)
+                && !table[2][2].equals(this.type) && !table[2][2].equals(blank)) {
+            // Check if the wished places is blank
+            if (table[0][2].equals(blank)) {
+                // then pressButton
+                pressButton(table, this.type, 0, 2);                
+            }
+        }
+        
+        // ************************* ROW 0 ***********************************
+        /*  #  0  1  2
+         *  0 [X][X][ ]
+         *  1 [ ][ ][ ]
+         *  2 [ ][ ][ ]  */
+        if (!table[0][0].equals(this.type) && !table[0][0].equals(blank)
+                && !table[0][1].equals(this.type) && !table[0][1].equals(blank)) {
+            // Check if the wished places is blank
+            if (table[0][2].equals(blank)) {
+                // then pressButton
+                pressButton(table, this.type, 0, 2);
+            }
+        }
+        /*  #  0  1  2
+         *  0 [X][ ][X]
+         *  1 [ ][ ][ ]
+         *  2 [ ][ ][ ]  */
+        if (!table[0][0].equals(this.type) && !table[0][0].equals(blank)
+                && !table[0][2].equals(this.type) && !table[0][2].equals(blank)) {
+            // Check if the wished places is blank
+            if (table[0][1].equals(blank)) {
+                // then pressButton
+                pressButton(table, this.type, 0, 1);
+            }
+        }
+        /*  #  0  1  2
+         *  0 [ ][X][X]
+         *  1 [ ][ ][ ]
+         *  2 [ ][ ][ ]  */
+        if (!table[0][1].equals(this.type) && !table[0][1].equals(blank)
+                && !table[0][2].equals(this.type) && !table[0][2].equals(blank)) {
+            // Check if the wished places is blank
+            if (table[0][0].equals(blank)) {
+                // then pressButton
+                pressButton(table, this.type, 0, 0);
+            }
+        }
+        // ************************* ROW 1 ***********************************
+        /*  #  0  1  2
+         *  0 [ ][ ][ ]
+         *  1 [X][X][ ]
+         *  2 [ ][ ][ ]  */
+        if (!table[1][0].equals(this.type) && !table[1][0].equals(blank)
+                && !table[1][1].equals(this.type) && !table[1][1].equals(blank)) {
+            // Check if the wished places is blank
+            if (table[1][2].equals(blank)) {
+                // then pressButton
+                pressButton(table, this.type, 1, 2);
+            }
+        }
+        /*  #  0  1  2
+         *  0 [ ][ ][ ]
+         *  1 [X][ ][X]
+         *  2 [ ][ ][ ]  */
+        if (!table[1][0].equals(this.type) && !table[1][0].equals(blank)
+                && !table[1][2].equals(this.type) && !table[1][2].equals(blank)) {
+            // Check if the wished places is blank
+            if (table[1][1].equals(blank)) {
+                // then pressButton
+                pressButton(table, this.type, 1, 1);
+            }
+        }
+        /*  #  0  1  2
+         *  0 [ ][ ][ ]
+         *  1 [ ][X][X]
+         *  2 [ ][ ][ ]  */
+        if (!table[1][1].equals(this.type) && !table[1][1].equals(blank)
+                && !table[1][2].equals(this.type) && !table[1][2].equals(blank)) {
+            // Check if the wished places is blank
+            if (table[1][0].equals(blank)) {
+                // then pressButton
+                pressButton(table, this.type, 1, 0);
+            }
+        }
+        // ************************* ROW 2 ***********************************
+        /*  #  0  1  2
+         *  0 [ ][ ][ ]
+         *  1 [ ][ ][ ]
+         *  2 [X][X][ ]  */
+        if (!table[2][0].equals(this.type) && !table[2][0].equals(blank)
+                && !table[2][1].equals(this.type) && !table[2][1].equals(blank)) {
+            // Check if the wished places is blank
+            if (table[2][2].equals(blank)) {
+                // then pressButton
+                pressButton(table, this.type, 2, 2);
+                System.out.println("defense");
+            }
+        }
+        /*  #  0  1  2
+         *  0 [ ][ ][ ]
+         *  1 [ ][ ][ ]
+         *  2 [X][ ][X]  */
+        if (!table[2][0].equals(this.type) && !table[2][0].equals(blank)
+                && !table[2][2].equals(this.type) && !table[2][2].equals(blank)) {
+            // Check if the wished places is blank
+            if (table[2][1].equals(blank)) {
+                // then pressButton
+                pressButton(table, this.type, 2, 1);
+                System.out.println("defense");
+            }
+        }
+        /*  #  0  1  2
+         *  0 [ ][ ][ ]
+         *  1 [ ][ ][ ]
+         *  2 [ ][X][X]  */
+        if (!table[2][1].equals(this.type) && !table[2][1].equals(blank)
+                && !table[2][2].equals(this.type) && !table[2][2].equals(blank)) {
+            // Check if the wished places is blank
+            if (table[2][0].equals(blank)) {
+                // then pressButton
+                pressButton(table, this.type, 2, 0);
+                System.out.println("defense");
+            }
+        }
     }
 
     private void attack(String[][] table) {
