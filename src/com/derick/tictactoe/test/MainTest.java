@@ -23,7 +23,9 @@ public class MainTest {
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
-        GameController game = new GameController();
+        Player player = new Player("Player");
+        GameController game = new GameController(player);
+        
 
         while (game.isRunning()) {
             game.update();
@@ -42,7 +44,7 @@ public class MainTest {
                     int columnGuest = input.nextInt() - 1;
 
                     System.out.println("\n\n\n************************************");
-                    game.pressButton("X", rowGuest, columnGuest);
+                    player.pressButton(game.getTable(),"X", rowGuest, columnGuest);
                 }
             } catch (Exception e) {
                 game.setRunning(false);

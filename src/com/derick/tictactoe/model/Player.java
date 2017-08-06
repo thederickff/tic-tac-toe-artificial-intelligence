@@ -17,4 +17,18 @@ public class Player extends Players {
         this.type = "X";
     }
     
+    @Override
+    public void pressButton(String[][] table, String guest, int i, int j) {
+        // Check if the places is out of bound
+        if (i < 3 && j < 3) {
+            // Check if the place given weren't used yet
+            if (!table[i][j].equals("X") && !table[i][j].equals("O")) {
+                table[i][j] = guest;
+            } else {
+                System.out.println("Error: YOU CANNOT GUEST HERE!");
+            }
+        } else {
+            System.out.println("Error: PLACES GIVEN OUT OF BOUND!");
+        }
+    }
 }

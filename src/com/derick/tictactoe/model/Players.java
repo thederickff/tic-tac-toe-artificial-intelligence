@@ -9,7 +9,7 @@ package com.derick.tictactoe.model;
  *
  * @author derickfelix
  */
-public class Players {
+public abstract class Players {
     
     protected int score;
     protected boolean playing;
@@ -21,6 +21,9 @@ public class Players {
         this.score = 0;
     }
 
+    // Press Button method
+    public abstract void pressButton(String[][] table, String guest, int i, int j);
+    
     public String getName() {
         return name;
     }
@@ -53,7 +56,6 @@ public class Players {
         this.type = type;
     }
     
-
     @Override
     public String toString() {
         return "Player = [" + "name = " + name + ", score = " + score + ", playing = " + playing + ']';
