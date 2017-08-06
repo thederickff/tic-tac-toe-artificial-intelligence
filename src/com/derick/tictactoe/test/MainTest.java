@@ -6,6 +6,7 @@
 package com.derick.tictactoe.test;
 
 import com.derick.tictactoe.controller.GameController;
+import com.derick.tictactoe.model.Player;
 import java.util.Scanner;
 
 /**
@@ -23,29 +24,37 @@ public class MainTest {
 
         Scanner input = new Scanner(System.in);
         GameController game = new GameController();
-        
 
         while (game.isRunning()) {
-
-            updateBoard(game.getTable());
-
+            game.update();
+            // this command is just for test
+            drawBoard(game.getTable());
+            
+            
+            
+            // Test section
             try {
-                System.out.print("Give a row (between 1 and 3): $ ");
-                int rowGuest = input.nextInt() - 1;
-                System.out.print("Give a column (between 1 and 3): $ ");
-                int columnGuest = input.nextInt() - 1;
-                
-                System.out.println("\n\n\n************************************");
-                game.pressButton("X", rowGuest, columnGuest);
+                if (game.isRunning()) {
+
+                    System.out.print("Give a ROW (between 1 and 3): $ ");
+                    int rowGuest = input.nextInt() - 1;
+                    System.out.print("Give a COL (between 1 and 3): $ ");
+                    int columnGuest = input.nextInt() - 1;
+
+                    System.out.println("\n\n\n************************************");
+                    game.pressButton("X", rowGuest, columnGuest);
+                }
             } catch (Exception e) {
                 game.setRunning(false);
                 System.out.println("Error: " + e);
             }
+
         }
 
     }
 
-    static void updateBoard(String[][] places) {
+    // Just for test
+    static void drawBoard(String[][] places) {
 
         // Prints column position ex: # 1 2 3
         table = "# ";

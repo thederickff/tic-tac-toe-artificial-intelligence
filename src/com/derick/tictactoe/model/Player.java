@@ -14,6 +14,7 @@ public class Player extends Players {
     public Player(String name) {
         super(name);
         this.playing = true;
+        this.type = "X";
     }
     
 }

@@ -5,6 +5,9 @@
  */
 package com.derick.tictactoe.controller;
 
+import com.derick.tictactoe.model.Enemy;
+import com.derick.tictactoe.model.Player;
+import com.derick.tictactoe.model.Players;
 
 /**
  *
@@ -15,13 +18,18 @@ public class GameController {
     // Tic tac toe 
     private String[][] table;
     private boolean running;
-    
-    public GameController(){
+    private Enemy enemy;
+    private Player player;
+
+    public GameController() {
         // Initialize game as running
         this.running = true;
-        // initialize a 3x3 table
+        // Initialize a 3x3 table
         this.table = new String[3][3];
-        
+        // Initialize the enemy
+        this.enemy = new Enemy("Enemy");
+        this.player = new Player("Player");
+
         // Set them all as blank
         for (int i = 0; i < this.table.length; i++) {
             for (int j = 0; j < this.table.length; j++) {
@@ -29,7 +37,7 @@ public class GameController {
             }
         }
     }
-    
+
     // Press Button method
     public void pressButton(String guest, int i, int j) {
         // Check if the places is out of bound
@@ -43,6 +51,78 @@ public class GameController {
         } else {
             System.out.println("Error: PLACES GIVEN OUT OF BOUND!");
         }
+    }
+
+    // Update method
+    public void update() {
+
+        checkBoard(this.player);
+        this.enemy.update(this);
+        checkBoard(this.enemy);
+    }
+
+    public void checkBoard(Players obj){
+        
+        /*  [ ][ ][X]
+         *  [ ][X][ ]
+         *  [X][ ][ ]  */      
+        if(this.table[2][0].equals(obj.getType()) && table[1][1].equals(obj.getType()) && table[0][2].equals(obj.getType())) {
+            System.out.println(obj.getName() + " WON!");
+            this.running = false;
+        }    
+        /*  [X][ ][ ]
+         *  [ ][X][ ]
+         *  [ ][ ][X]  */      
+        if(this.table[0][0].equals(obj.getType()) && table[1][1].equals(obj.getType()) && this.table[2][2].equals(obj.getType())) {
+            System.out.println(obj.getName() + " WON!");
+            this.running = false;
+        }    
+        
+        // VERTICAL SEEK
+        /*  [X][X][X]
+         *  [ ][ ][ ]
+         *  [ ][ ][ ]  */      
+        if(table[0][0].equals(obj.getType()) && table[0][1].equals(obj.getType()) && table[0][2].equals(obj.getType())) {
+            System.out.println(obj.getName() + " WON!");
+            this.running = false;
+        }    
+        /*  [ ][ ][ ]
+         *  [X][X][X]
+         *  [ ][ ][ ]  */      
+        if(table[1][0].equals(obj.getType()) && table[1][1].equals(obj.getType()) && table[1][2].equals(obj.getType())) {
+            System.out.println(obj.getName() + " WON!");
+            this.running = false;
+        }    
+        /*  [ ][ ][ ]
+         *  [ ][ ][ ]
+         *  [X][X][X]  */      
+        if(table[2][0].equals(obj.getType()) && table[2][1].equals(obj.getType()) && table[2][2].equals(obj.getType())) {
+            System.out.println(obj.getName() + " WON!");
+            this.running = false;
+        }    
+        
+        // HORIZONTAL SEEK
+        /*  [X][ ][ ]
+         *  [X][ ][ ]
+         *  [X][ ][ ]  */      
+        if(table[0][0].equals(obj.getType()) && table[1][0].equals(obj.getType()) && table[2][0].equals(obj.getType())) {
+            System.out.println(obj.getName() + " WON!");
+            this.running = false;
+        }    
+        /*  [ ][X][ ]
+         *  [ ][X][ ]
+         *  [ ][X][ ]  */      
+        if(table[0][1].equals(obj.getType()) && table[1][1].equals(obj.getType()) && table[2][1].equals(obj.getType())) {
+            System.out.println(obj.getName() + " WON!");
+            this.running = false;
+        }    
+        /*  [ ][ ][X]
+         *  [ ][ ][X]
+         *  [ ][ ][X]  */      
+        if(table[0][2].equals(obj.getType()) && table[1][2].equals(obj.getType()) && table[2][2].equals(obj.getType())) {
+            System.out.println(obj.getName() + " WON!");
+            this.running = false;
+        }    
     }
 
     public String[][] getTable() {
@@ -60,8 +140,5 @@ public class GameController {
     public void setRunning(boolean running) {
         this.running = running;
     }
-    
-    
-    
-    
+
 }

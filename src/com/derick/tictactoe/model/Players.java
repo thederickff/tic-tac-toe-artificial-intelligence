@@ -11,9 +11,10 @@ package com.derick.tictactoe.model;
  */
 public class Players {
     
-    protected String name;
     protected int score;
     protected boolean playing;
+    protected String name;
+    protected String type;
     
     public Players(String name) {
         this.name = name;
@@ -43,6 +44,15 @@ public class Players {
     public void setPlaying(boolean playing) {
         this.playing = playing;
     }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+    
 
     @Override
     public String toString() {
