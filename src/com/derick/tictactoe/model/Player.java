@@ -13,7 +13,7 @@ public class Player extends Players {
     
     public Player(String name) {
         super(name);
-        this.playing = true;
+        this.playing = false;
         this.type = "X";
     }
     
@@ -24,6 +24,7 @@ public class Player extends Players {
             // Check if the place given weren't used yet
             if (!table[i][j].equals("X") && !table[i][j].equals("O")) {
                 table[i][j] = guest;
+                this.playing = false;
             } else {
                 System.out.println("Error: YOU CANNOT GUEST HERE!");
             }

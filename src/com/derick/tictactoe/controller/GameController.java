@@ -41,9 +41,10 @@ public class GameController {
     // Update method
     public void update() {
 
-        checkBoard(this.player);
+        checkWinner(this.player);
+        this.enemy.setPlaying(true);
         this.enemy.update(this);
-        checkBoard(this.enemy);
+        checkWinner(this.enemy);
         checkBoard();
     }
 
@@ -63,7 +64,7 @@ public class GameController {
         }
     }
 
-    private void checkBoard(Players obj) {
+    private void checkWinner(Players obj) {
 
         /*  [ ][ ][X]
          *  [ ][X][ ]
