@@ -8,6 +8,7 @@ package com.derick.tictactoe.controller;
 import com.derick.tictactoe.model.Enemy;
 import com.derick.tictactoe.model.Player;
 import com.derick.tictactoe.model.Players;
+import javax.swing.JButton;
 
 /**
  *
@@ -52,7 +53,7 @@ public class GameController {
 
     private void checkBoard() {
         int total = 0;
-    
+
         for (int i = 0; i < this.table.length; i++) {
             for (int j = 0; j < this.table.length; j++) {
                 if (!this.table[i][j].equals(" ")) {
@@ -129,7 +130,7 @@ public class GameController {
             this.running = false;
         }
     }
-
+    
     public String[][] getTable() {
         return table;
     }
