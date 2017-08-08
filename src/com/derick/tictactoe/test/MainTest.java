@@ -28,7 +28,7 @@ public class MainTest {
         
 
         while (game.isRunning()) {
-            game.update();
+            //game.update();
             // this command is just for test
             drawBoard(game.getTable());
             

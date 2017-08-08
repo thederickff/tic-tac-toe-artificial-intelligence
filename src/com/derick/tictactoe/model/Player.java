@@ -5,6 +5,7 @@
  */
 package com.derick.tictactoe.model;
 
+import java.awt.Color;
 /**
  *
  * @author derickfelix
@@ -15,6 +16,7 @@ public class Player extends Players {
         super(name);
         this.playing = false;
         this.type = "X";
+        this.color = Color.green.darker();
     }
     
     @Override

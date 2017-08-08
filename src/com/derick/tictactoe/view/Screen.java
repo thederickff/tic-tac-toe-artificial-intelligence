@@ -6,7 +6,10 @@
 package com.derick.tictactoe.view;
 
 import com.derick.tictactoe.controller.GameController;
+import com.derick.tictactoe.model.Enemy;
 import com.derick.tictactoe.model.Player;
+import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,6 +19,7 @@ public class Screen extends javax.swing.JFrame {
 
     private GameController game;
     private Player player;
+
     /**
      * Creates new form Screen
      */
@@ -23,20 +27,82 @@ public class Screen extends javax.swing.JFrame {
         this.player = new Player("Player");
         this.game = new GameController(player);
         initComponents();
-        this.game.update();
-        draw(this.game.getTable());
+        this.game.update(lblStatus);
+        draw();
     }
-    
-    private void draw(String[][] table){
-        this.btn1.setText(table[0][0]);
-        this.btn2.setText(table[0][1]);
-        this.btn3.setText(table[0][2]);
-        this.btn4.setText(table[1][0]);
-        this.btn5.setText(table[1][1]);
-        this.btn6.setText(table[1][2]);
-        this.btn8.setText(table[2][0]);
-        this.btn9.setText(table[2][1]);
-        this.btn7.setText(table[2][2]);
+
+    // Show the table to the view
+    private void draw() {
+        // Update buttons
+        this.btn1.setText(game.getTable()[0][0]);
+        this.btn2.setText(game.getTable()[0][1]);
+        this.btn3.setText(game.getTable()[0][2]);
+        this.btn4.setText(game.getTable()[1][0]);
+        this.btn5.setText(game.getTable()[1][1]);
+        this.btn6.setText(game.getTable()[1][2]);
+        this.btn7.setText(game.getTable()[2][0]);
+        this.btn8.setText(game.getTable()[2][1]);
+        this.btn9.setText(game.getTable()[2][2]);
+        // Update scores
+        game.drawScores(lblScorePlayer, lblScoreCPU);
+        
+        // Update Color
+        // btn 1
+        if(btn1.getText().equals(player.getType())) {
+            btn1.setForeground(Color.green.darker());
+        } else {
+            btn1.setForeground(Color.red.darker());
+        }
+        // btn 2
+        if(btn2.getText().equals(player.getType())) {
+            btn2.setForeground(Color.green.darker());
+        } else {
+            btn2.setForeground(Color.red.darker());
+        }
+        // btn 3
+        if(btn3.getText().equals(player.getType())) {
+            btn3.setForeground(Color.green.darker());
+        } else {
+            btn3.setForeground(Color.red.darker());
+        }
+        // btn 4
+        if(btn4.getText().equals(player.getType())) {
+            btn4.setForeground(Color.green.darker());
+        } else {
+            btn4.setForeground(Color.red.darker());
+        }
+        // btn 5
+        if(btn5.getText().equals(player.getType())) {
+            btn5.setForeground(Color.green.darker());
+        } else {
+            btn5.setForeground(Color.red.darker());
+        }
+        // btn 6
+        if(btn6.getText().equals(player.getType())) {
+            btn6.setForeground(Color.green.darker());
+        } else {
+            btn6.setForeground(Color.red.darker());
+        }
+        // btn 7
+        if(btn7.getText().equals(player.getType())) {
+            btn7.setForeground(Color.green.darker());
+        } else {
+            btn7.setForeground(Color.red.darker());
+        }
+        // btn 8
+        if(btn8.getText().equals(player.getType())) {
+            btn8.setForeground(Color.green.darker());
+        } else {
+            btn8.setForeground(Color.red.darker());
+        }
+        // btn 9
+        if(btn9.getText().equals(player.getType())) {
+            btn9.setForeground(Color.green.darker());
+        } else {
+            btn9.setForeground(Color.red.darker());
+        }
+        
+        
     }
 
     /**
@@ -247,7 +313,12 @@ public class Screen extends javax.swing.JFrame {
         paneControl.setBorder(javax.swing.BorderFactory.createTitledBorder(null, " Settings ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14))); // NOI18N
 
         btnRestartGame.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
-        btnRestartGame.setText("Restart Game");
+        btnRestartGame.setText("Restart");
+        btnRestartGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRestartGameActionPerformed(evt);
+            }
+        });
 
         btnResetScoreboard.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
         btnResetScoreboard.setText("Reset Scoreboard");
@@ -259,6 +330,11 @@ public class Screen extends javax.swing.JFrame {
 
         btnAbout.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
         btnAbout.setText("About");
+        btnAbout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAboutActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout paneControlLayout = new javax.swing.GroupLayout(paneControl);
         paneControl.setLayout(paneControlLayout);
@@ -275,10 +351,9 @@ public class Screen extends javax.swing.JFrame {
         paneControlLayout.setVerticalGroup(
             paneControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneControlLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnResetScoreboard, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRestartGame)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnResetScoreboard, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAbout)
                 .addContainerGap())
@@ -343,50 +418,115 @@ public class Screen extends javax.swing.JFrame {
 
     private void btnResetScoreboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetScoreboardActionPerformed
         // TODO add your handling code here:
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+        int dialogResult = JOptionPane.showConfirmDialog(null, "<html>Are you sure you want to reset <strong>ScoreBoard</strong> ?</html>",
+                "Warning", dialogButton);
+        if (dialogResult == JOptionPane.YES_OPTION) {
+            game.resetScores(lblScorePlayer, lblScoreCPU);
+        }
     }//GEN-LAST:event_btnResetScoreboardActionPerformed
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
         // TODO add your handling code here:
+        if (game.isRunning()) {
+            player.pressButton(game.getTable(), player.getType(), 0, 0);
+            game.update(lblStatus);
+            draw();
+            game.drawScores(lblScorePlayer, lblScoreCPU);
+        }
     }//GEN-LAST:event_btn1ActionPerformed
 
     private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
         // TODO add your handling code here:
+        if (game.isRunning()) {
+            player.pressButton(game.getTable(), player.getType(), 0, 1);
+            game.update(lblStatus);
+            draw();
+        }
     }//GEN-LAST:event_btn2ActionPerformed
 
     private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
         // TODO add your handling code here:
-        
+        if (game.isRunning()) {
+            player.pressButton(game.getTable(), player.getType(), 0, 2);
+            game.update(lblStatus);
+            draw();
+        }
     }//GEN-LAST:event_btn3ActionPerformed
 
     private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
         // TODO add your handling code here:
-        
+        if (game.isRunning()) {
+            player.pressButton(game.getTable(), player.getType(), 1, 0);
+            game.update(lblStatus);
+            draw();
+        }
     }//GEN-LAST:event_btn4ActionPerformed
 
     private void btn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn5ActionPerformed
         // TODO add your handling code here:
-        
+        if (game.isRunning()) {
+            player.pressButton(game.getTable(), player.getType(), 1, 1);
+            game.update(lblStatus);
+            draw();
+        }
     }//GEN-LAST:event_btn5ActionPerformed
 
     private void btn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn6ActionPerformed
         // TODO add your handling code here:
-        
+        if (game.isRunning()) {
+            player.pressButton(game.getTable(), player.getType(), 1, 2);
+            game.update(lblStatus);
+            draw();
+        }
     }//GEN-LAST:event_btn6ActionPerformed
 
     private void btn7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn7ActionPerformed
         // TODO add your handling code here:
-        
+        if (game.isRunning()) {
+            player.pressButton(game.getTable(), player.getType(), 2, 0);
+            game.update(lblStatus);
+            draw();
+
+        }
     }//GEN-LAST:event_btn7ActionPerformed
 
     private void btn8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn8ActionPerformed
         // TODO add your handling code here:
-        
+        if (game.isRunning()) {
+            player.pressButton(game.getTable(), player.getType(), 2, 1);
+            game.update(lblStatus);
+            draw();
+        }
     }//GEN-LAST:event_btn8ActionPerformed
 
     private void btn9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn9ActionPerformed
         // TODO add your handling code here:
-        
+        if (game.isRunning()) {
+            player.pressButton(game.getTable(), player.getType(), 2, 2);
+            game.update(lblStatus);
+            draw();
+        }
     }//GEN-LAST:event_btn9ActionPerformed
+
+    private void btnRestartGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestartGameActionPerformed
+        // TODO add your handling code here:
+        if (game.isRunning()) {
+            lblStatus.setForeground(Color.MAGENTA.darker());
+            lblStatus.setText("You cannot do it until the game ends");
+        } else {
+            Enemy enemy = game.getEnemy();
+            game = new GameController(player);
+            game.setEnemy(enemy);
+            this.game.update(lblStatus);
+            draw();
+        }
+    }//GEN-LAST:event_btnRestartGameActionPerformed
+
+    private void btnAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAboutActionPerformed
+       JOptionPane.showMessageDialog(null, "<html>- <strong>Tic Tac Toe Game </strong>V1.0 <br>"
+               + " - Created by <i style='font-weight: 700'>Derick Felix</i></html>");
+    }//GEN-LAST:event_btnAboutActionPerformed
 
     /**
      * @param args the command line arguments

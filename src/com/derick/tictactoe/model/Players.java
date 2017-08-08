@@ -5,6 +5,7 @@
  */
 package com.derick.tictactoe.model;
 
+import java.awt.Color;
 /**
  *
  * @author derickfelix
@@ -15,6 +16,7 @@ public abstract class Players {
     protected boolean playing;
     protected String name;
     protected String type;
+    protected Color color;
     
     public Players(String name) {
         this.name = name;
@@ -59,6 +61,14 @@ public abstract class Players {
     @Override
     public String toString() {
         return "Player = [" + "name = " + name + ", score = " + score + ", playing = " + playing + ']';
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
     }
     
     

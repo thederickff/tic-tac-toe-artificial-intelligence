@@ -8,7 +8,8 @@ package com.derick.tictactoe.controller;
 import com.derick.tictactoe.model.Enemy;
 import com.derick.tictactoe.model.Player;
 import com.derick.tictactoe.model.Players;
-import javax.swing.JButton;
+import java.awt.Color;
+import javax.swing.JLabel;
 
 /**
  *
@@ -40,18 +41,35 @@ public class GameController {
     }
 
     // Update method
-    public void update() {
+    public void update(JLabel status) {
 
-        checkWinner(this.player);
-        this.enemy.setPlaying(true);
-        this.enemy.update(this);
+        // Check if the player won
+        checkWinner(this.player, status);
+        // if the player did'nt won check if the enemy did it.
         if (running) {
-            checkWinner(this.enemy);
+            this.enemy.setPlaying(true);
+            this.enemy.update(this);
+            checkWinner(this.enemy, status);
         }
-        checkBoard();
+        // Check if there is space to guest
+        checkBoard(status);
+
     }
 
-    private void checkBoard() {
+    public void drawScores(JLabel lblPlayer, JLabel lblEnemy) {
+       lblPlayer.setText(Integer.toString(player.getScore()));
+       lblEnemy.setText(Integer.toString(enemy.getScore()));
+    }
+    public void resetScores(JLabel lblPlayer, JLabel lblEnemy) {
+       player.setScore(0);
+       enemy.setScore(0);
+       lblPlayer.setText("0");
+       lblEnemy.setText("0");
+    }
+
+    // Responsible for counting the quantity of blank spaces
+    private void checkBoard(JLabel out) {
+        // Creates a new variable to
         int total = 0;
 
         for (int i = 0; i < this.table.length; i++) {
@@ -62,25 +80,26 @@ public class GameController {
             }
         }
 
+        // If there is no blank space the game is stopped
         if (total == 9) {
             this.running = false;
+            out.setForeground(Color.BLUE.darker());
+            out.setText("Draw Game");
         }
     }
 
-    private void checkWinner(Players obj) {
+    private void checkWinner(Players obj, JLabel lblStatus) {
 
         /*  [ ][ ][X]
          *  [ ][X][ ]
          *  [X][ ][ ]  */
         if (this.table[2][0].equals(obj.getType()) && table[1][1].equals(obj.getType()) && table[0][2].equals(obj.getType())) {
-            System.out.println(obj.getName() + " WON!");
             this.running = false;
         }
         /*  [X][ ][ ]
          *  [ ][X][ ]
          *  [ ][ ][X]  */
         if (this.table[0][0].equals(obj.getType()) && table[1][1].equals(obj.getType()) && this.table[2][2].equals(obj.getType())) {
-            System.out.println(obj.getName() + " WON!");
             this.running = false;
         }
 
@@ -89,21 +108,18 @@ public class GameController {
          *  [ ][ ][ ]
          *  [ ][ ][ ]  */
         if (table[0][0].equals(obj.getType()) && table[0][1].equals(obj.getType()) && table[0][2].equals(obj.getType())) {
-            System.out.println(obj.getName() + " WON!");
             this.running = false;
         }
         /*  [ ][ ][ ]
          *  [X][X][X]
          *  [ ][ ][ ]  */
         if (table[1][0].equals(obj.getType()) && table[1][1].equals(obj.getType()) && table[1][2].equals(obj.getType())) {
-            System.out.println(obj.getName() + " WON!");
             this.running = false;
         }
         /*  [ ][ ][ ]
          *  [ ][ ][ ]
          *  [X][X][X]  */
         if (table[2][0].equals(obj.getType()) && table[2][1].equals(obj.getType()) && table[2][2].equals(obj.getType())) {
-            System.out.println(obj.getName() + " WON!");
             this.running = false;
         }
 
@@ -112,25 +128,28 @@ public class GameController {
          *  [X][ ][ ]
          *  [X][ ][ ]  */
         if (table[0][0].equals(obj.getType()) && table[1][0].equals(obj.getType()) && table[2][0].equals(obj.getType())) {
-            System.out.println(obj.getName() + " WON!");
             this.running = false;
         }
         /*  [ ][X][ ]
          *  [ ][X][ ]
          *  [ ][X][ ]  */
         if (table[0][1].equals(obj.getType()) && table[1][1].equals(obj.getType()) && table[2][1].equals(obj.getType())) {
-            System.out.println(obj.getName() + " WON!");
             this.running = false;
         }
         /*  [ ][ ][X]
          *  [ ][ ][X]
          *  [ ][ ][X]  */
         if (table[0][2].equals(obj.getType()) && table[1][2].equals(obj.getType()) && table[2][2].equals(obj.getType())) {
-            System.out.println(obj.getName() + " WON!");
             this.running = false;
         }
+
+        if (running == false) {
+            lblStatus.setForeground(obj.getColor());
+            lblStatus.setText(obj.getName() + " won!");
+            obj.setScore(obj.getScore() + 1);
+        }
     }
-    
+
     public String[][] getTable() {
         return table;
     }
@@ -146,5 +165,22 @@ public class GameController {
     public void setRunning(boolean running) {
         this.running = running;
     }
+
+    public Enemy getEnemy() {
+        return enemy;
+    }
+
+    public void setEnemy(Enemy enemy) {
+        this.enemy = enemy;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+    
 
 }

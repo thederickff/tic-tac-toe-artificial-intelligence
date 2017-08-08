@@ -6,6 +6,7 @@
 package com.derick.tictactoe.model;
 
 import com.derick.tictactoe.controller.GameController;
+import java.awt.Color;
 import java.util.Random;
 
 /**
@@ -25,6 +26,7 @@ public class Enemy extends Players {
         this.firstGuest = true;
         this.random = new Random();
         this.blank = " ";
+        this.color = Color.red.darker();
     }
 
     public void update(GameController game) {
