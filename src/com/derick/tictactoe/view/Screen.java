@@ -33,6 +33,9 @@ public class Screen extends javax.swing.JFrame {
 
     // Show the table to the view
     private void draw() {
+        if(game.isRunning()) {
+            lblStatus.setText("");
+        }
         // Update buttons
         this.btn1.setText(game.getTable()[0][0]);
         this.btn2.setText(game.getTable()[0][1]);
@@ -45,64 +48,62 @@ public class Screen extends javax.swing.JFrame {
         this.btn9.setText(game.getTable()[2][2]);
         // Update scores
         game.drawScores(lblScorePlayer, lblScoreCPU);
-        
+
         // Update Color
         // btn 1
-        if(btn1.getText().equals(player.getType())) {
+        if (btn1.getText().equals(player.getType())) {
             btn1.setForeground(Color.green.darker());
         } else {
             btn1.setForeground(Color.red.darker());
         }
         // btn 2
-        if(btn2.getText().equals(player.getType())) {
+        if (btn2.getText().equals(player.getType())) {
             btn2.setForeground(Color.green.darker());
         } else {
             btn2.setForeground(Color.red.darker());
         }
         // btn 3
-        if(btn3.getText().equals(player.getType())) {
+        if (btn3.getText().equals(player.getType())) {
             btn3.setForeground(Color.green.darker());
         } else {
             btn3.setForeground(Color.red.darker());
         }
         // btn 4
-        if(btn4.getText().equals(player.getType())) {
+        if (btn4.getText().equals(player.getType())) {
             btn4.setForeground(Color.green.darker());
         } else {
             btn4.setForeground(Color.red.darker());
         }
         // btn 5
-        if(btn5.getText().equals(player.getType())) {
+        if (btn5.getText().equals(player.getType())) {
             btn5.setForeground(Color.green.darker());
         } else {
             btn5.setForeground(Color.red.darker());
         }
         // btn 6
-        if(btn6.getText().equals(player.getType())) {
+        if (btn6.getText().equals(player.getType())) {
             btn6.setForeground(Color.green.darker());
         } else {
             btn6.setForeground(Color.red.darker());
         }
         // btn 7
-        if(btn7.getText().equals(player.getType())) {
+        if (btn7.getText().equals(player.getType())) {
             btn7.setForeground(Color.green.darker());
         } else {
             btn7.setForeground(Color.red.darker());
         }
         // btn 8
-        if(btn8.getText().equals(player.getType())) {
+        if (btn8.getText().equals(player.getType())) {
             btn8.setForeground(Color.green.darker());
         } else {
             btn8.setForeground(Color.red.darker());
         }
         // btn 9
-        if(btn9.getText().equals(player.getType())) {
+        if (btn9.getText().equals(player.getType())) {
             btn9.setForeground(Color.green.darker());
         } else {
             btn9.setForeground(Color.red.darker());
         }
-        
-        
     }
 
     /**
@@ -524,8 +525,8 @@ public class Screen extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRestartGameActionPerformed
 
     private void btnAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAboutActionPerformed
-       JOptionPane.showMessageDialog(null, "<html>- <strong>Tic Tac Toe Game </strong>V1.0 <br>"
-               + " - Created by <i style='font-weight: 700'>Derick Felix</i></html>");
+        JOptionPane.showMessageDialog(null, "<html>- <strong>Tic Tac Toe Game </strong>V1.0 <br>"
+                + " - Created by <i style='font-weight: 700'>Derick Felix</i></html>");
     }//GEN-LAST:event_btnAboutActionPerformed
 
     /**
