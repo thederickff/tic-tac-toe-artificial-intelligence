@@ -9,16 +9,10 @@ import com.derick.tictactoe.controller.GameController;
 import com.derick.tictactoe.model.Enemy;
 import com.derick.tictactoe.model.Player;
 import java.awt.Color;
-import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
