@@ -9,6 +9,16 @@ import com.derick.tictactoe.controller.GameController;
 import com.derick.tictactoe.model.Enemy;
 import com.derick.tictactoe.model.Player;
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -27,13 +37,29 @@ public class Screen extends javax.swing.JFrame {
         this.player = new Player("Player");
         this.game = new GameController(player);
         initComponents();
+        setIcon();
         this.game.update(lblStatus);
         draw();
     }
 
+    private void setIcon() {
+        // Read the image that will be used as the application icon.
+        // Using "/" in front of the image file name will locate the
+        // image at the root folder of our application. If you don't
+        // use a "/" then the image file should be on the same folder
+        // with your class file.
+        try {
+            URL resource = getClass().getResource("../resources/icon.png");
+            BufferedImage image = ImageIO.read(resource);
+            setIconImage(image);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     // Show the table to the view
     private void draw() {
-        if(game.isRunning()) {
+        if (game.isRunning()) {
             lblStatus.setText("");
         }
         // Update buttons
